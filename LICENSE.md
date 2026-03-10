@@ -53,8 +53,8 @@ GitHub: [your-repo-url]
 For permissions beyond the scope of this license, collaborations, or inquiries:
 
 **Saurabh Mane**  
-📧 [your email]  
-🔗 [your LinkedIn / GitHub profile]
+📧 [saurabhmane202@gmail.com]  
+🔗 [www.linkedin.com/in/saurabhmane2305]
 
 ---
 
