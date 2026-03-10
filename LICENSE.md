@@ -43,7 +43,7 @@ If you reference this work, please cite it as:
 ```
 Saurabh Mane (2026). Deep Learning-Based Sperm Morphology Classification:
 A Comparative Validation Study of EfficientNet-B0 and ResNet50.
-GitHub: [your-repo-url]
+GitHub: [https://github.com/Mane2305/Sperm-Morphology-CNN.git]
 ```
 
 ---
