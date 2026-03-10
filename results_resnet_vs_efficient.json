@@ -1,0 +1,12 @@
+{
+    "model_A": "ResNet50",
+    "model_B": "EfficientNet-B0",
+    "metric": "CV Accuracy (%)",
+    "mean_diff": 5.573999999999998,
+    "t_test_p": 0.037122024622921544,
+    "cohens_d": 1.3750548851382824,
+    "wilcoxon_stat": 14.0,
+    "wilcoxon_p": 0.0625,
+    "significant_t": true,
+    "significant_w": false
+}

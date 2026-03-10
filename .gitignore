@@ -1,0 +1,14 @@
+# Virtual environment
+sperm_cnn_env/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+# Ignore large model files
+*.pth
+*.pth2
+
+# Ignore Python cache and virtual environment
+__pycache__/
+*.pyc
+sperm_cnn_env/

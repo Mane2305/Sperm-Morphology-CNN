@@ -1,0 +1,2 @@
+model_A,model_B,metric,mean_diff,t_test_p,cohens_d,wilcoxon_stat,wilcoxon_p,significant_t,significant_w
+ResNet50,EfficientNet-B0,CV Accuracy (%),5.573999999999998,0.037122024622921544,1.3750548851382824,14.0,0.0625,True,False

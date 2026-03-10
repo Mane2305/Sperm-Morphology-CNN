@@ -1,0 +1,42 @@
+augmentation:
+  advanced: true
+  blur_probability: 0.3
+  brightness_contrast: 0.5
+  horizontal_flip: 0.5
+  noise_probability: 0.3
+  rotation_limit: 30
+  vertical_flip: 0.3
+data:
+  raw_dir: data/raw
+  test_dir: data/test
+  train_dir: data/train
+  val_dir: data/val
+evaluation:
+  save_plots: true
+  use_tta: true
+output:
+  best_model_name: best_sperm_classifier.pth2
+  log_dir: logs
+  model_dir: models
+preprocessing:
+  apply_clahe: true
+  background_subtraction: true
+  enhance_edges: true
+  output_size:
+  - 224
+  - 224
+training:
+  batch_size: 32
+  device: cpu
+  dropout: 0.5
+  early_stopping_patience: 15
+  gradient_clip_norm: 1.0
+  learning_rate: 0.0001
+  loss_type: focal
+  model_type: efficientnet_b0
+  num_classes: 3
+  num_epochs: 50
+  scheduler: cosine
+  use_class_weights: true
+  use_mixed_precision: true
+  weight_decay: 0.0001

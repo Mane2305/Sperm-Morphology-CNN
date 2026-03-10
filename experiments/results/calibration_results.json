@@ -1,0 +1,16 @@
+[
+    {
+        "model": "ResNet50",
+        "temperature": 1.4172345399856567,
+        "ece_before": 0.12001846437948957,
+        "ece_temperature": 0.17800657480757756,
+        "ece_dirichlet": 0.03573288479762402
+    },
+    {
+        "model": "EfficientNet-B0",
+        "temperature": 1.4258605241775513,
+        "ece_before": 0.09979001207330633,
+        "ece_temperature": 0.15236154803903426,
+        "ece_dirichlet": 0.03148488002051265
+    }
+]

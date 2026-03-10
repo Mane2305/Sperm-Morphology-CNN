@@ -1,0 +1,65 @@
+# Configuration for Sperm Morphology Classification
+
+data:
+  train_dir: "data/train"
+  val_dir: "data/val"
+  test_dir: "data/test"
+  raw_dir: "data/raw"
+
+training:
+  # Device
+  device: "cpu"  # or "cpu"
+  
+  # Model selection: 'resnet50', 'efficientnet_b0', or 'attention'
+  model_type: "efficientnet_b0"
+  
+  # Training hyperparameters
+  num_classes: 3
+  batch_size: 32  # Increase if GPU memory allows (64, 128)
+  num_epochs: 50
+  learning_rate: 0.0001  # Lower learning rate for fine-tuning
+  weight_decay: 0.0001  # L2 regularization
+  dropout: 0.5
+  
+  # Loss function: 'focal', 'label_smoothing', or 'cross_entropy'
+  loss_type: "focal"
+  use_class_weights: true
+  
+  # Learning rate scheduler: 'cosine', 'plateau', or 'none'
+  scheduler: "cosine"
+  
+  # Early stopping
+  early_stopping_patience: 15
+  
+  # Advanced options
+  use_mixed_precision: true  # Faster training on modern GPUs
+  gradient_clip_norm: 1.0    # Prevent exploding gradients
+
+evaluation:
+  # Test-time augmentation for better predictions
+  use_tta: true
+  
+  # Generate detailed plots
+  save_plots: true
+
+output:
+  model_dir: "models"
+  best_model_name: "best_sperm_classifier.pth2"
+  log_dir: "logs"
+
+preprocessing:
+  # Image preprocessing options
+  apply_clahe: true
+  enhance_edges: true
+  background_subtraction: true
+  output_size: [224, 224]
+
+# Data augmentation settings (in transforms.py)
+augmentation:
+  advanced: true  # Use advanced augmentation pipeline
+  horizontal_flip: 0.5
+  vertical_flip: 0.3
+  rotation_limit: 30
+  brightness_contrast: 0.5
+  blur_probability: 0.3
+  noise_probability: 0.3

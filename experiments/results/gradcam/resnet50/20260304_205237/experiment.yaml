@@ -1,0 +1,10 @@
+batch_size: 8
+config_schema: v1_training_preprocessing_data
+dataset: data/test
+device: cpu
+img_size: 224
+model: resnet50
+num_classes: 3
+samples: 20
+timestamp: '20260304_205237'
+weights: models/best_resnet50.pth
