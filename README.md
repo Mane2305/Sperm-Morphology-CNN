@@ -401,7 +401,7 @@ Interactive Swagger UI — open `http://127.0.0.1:8000/docs` in browser.
 
 ## Known Limitations
 
-**Single-source data.** All images from one lab with one staining protocol. Generalization to a different microscope or staining batch is unvalidated — probably the biggest real-world risk.
+**Single-source data.** All images from SMIDS Dataset. Generalization to a different microscope or staining batch is unvalidated — probably the biggest real-world risk.
 
 **Multi-cell frames.** The model focuses on whichever sperm head is most salient in the feature map, not a deliberate cell selection. A detection stage fixes this.
 
