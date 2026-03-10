@@ -162,9 +162,9 @@ This happens when miscalibration is non-uniform across classes — one global sc
 
 | ResNet50 | EfficientNet-B0 |
 |----------|-----------------|
-| ![ResNet50 before](experiments\results\ResNet50_calibration.png) | ![EfficientNet before](experiments\results\EfficientNet-B0_calibration.png) |
+| ![ResNet50 before](experiments/results/ResNet50_calibration.png) | ![EfficientNet before](experiments/results/EfficientNet-B0_calibration.png) |
 | Before calibration (ECE=0.120) | Before calibration (ECE=0.100) |
-| ![ResNet50 temp](experiments\results\ResNet50_temp.png) | ![EfficientNet temp](experiments\results\EfficientNet-B0_temp.png) |
+| ![ResNet50 temp](experiments/results/ResNet50_temp.png) | ![EfficientNet temp](experiments/results/EfficientNet-B0_temp.png) |
 | After temperature scaling (ECE=0.178) | After temperature scaling (ECE=0.152) |
 
 ### Dirichlet Calibration
@@ -178,7 +178,7 @@ Fits a full linear transformation on log-probabilities — corrects class-wise b
 
 | ResNet50 | EfficientNet-B0 |
 |----------|-----------------|
-| ![ResNet50 dirichlet](experiments\results\ResNet50_dirichlet.png) | ![EfficientNet dirichlet](experiments\results\EfficientNet-B0_dirichlet.png) |
+| ![ResNet50 dirichlet](experiments/results/ResNet50_dirichlet.png) | ![EfficientNet dirichlet](experiments/results/EfficientNet-B0_dirichlet.png) |
 | Dirichlet calibrated (ECE=0.036) | Dirichlet calibrated (ECE=0.031) |
 
 Both models now have ECE < 0.04. **For any deployment: fit Dirichlet calibration on your local validation set. The improvement is large and the fitting cost is negligible.**
@@ -195,11 +195,11 @@ Confidence scores: **55.73% → 56.62% → 87.44% → 89.56% → 72.99%**
 
 | Sample | Image | Notes |
 |--------|-------|-------|
-| 000 — 55.73% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_000_✓_pred_normal_true_normal.png) | Multi-cell frame. Activation on primary head, spreads slightly — lower confidence from scene complexity, not wrong attention |
-| 001 — 56.62% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_001_✓_pred_normal_true_normal.png) | Borderline head morphology. Heatmap is tight on nucleus — uncertainty is morphologically justified |
-| 002 — 87.44% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_002_✓_pred_normal_true_normal.png) | Single sperm with tail. Clean head activation, tail completely ignored |
-| 003 — 89.56% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_003_✓_pred_normal_true_normal.png) | Elongated sperm. Activation tracks head-midpiece junction precisely |
-| 004 — 72.99% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_004_✓_pred_normal_true_normal.png) | Dual-head artifact in view. Model spreads activation across both heads, confidence drops accordingly |
+| 000 — 55.73% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_000_✓_pred_normal_true_normal.png) | Multi-cell frame. Activation on primary head, spreads slightly — lower confidence from scene complexity, not wrong attention |
+| 001 — 56.62% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_001_✓_pred_normal_true_normal.png) | Borderline head morphology. Heatmap is tight on nucleus — uncertainty is morphologically justified |
+| 002 — 87.44% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_002_✓_pred_normal_true_normal.png) | Single sperm with tail. Clean head activation, tail completely ignored |
+| 003 — 89.56% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_003_✓_pred_normal_true_normal.png) | Elongated sperm. Activation tracks head-midpiece junction precisely |
+| 004 — 72.99% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_004_✓_pred_normal_true_normal.png) | Dual-head artifact in view. Model spreads activation across both heads, confidence drops accordingly |
 
 ### EfficientNet-B0 — Grad-CAM Samples (Set 2: samples 012–018)
 
@@ -207,13 +207,13 @@ This set is more diverse and includes one misclassification — the most instruc
 
 | Sample | Image | Result | Notes |
 |--------|-------|--------|-------|
-| 012 — 59.45% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_012_✓_pred_normal_true_normal.png) | ✅ Correct | Sperm near slide edge — a difficult frame with the dark slide border visible. Model ignores the edge entirely and focuses on the head. Low confidence is appropriate given the partial occlusion |
-| 013 — 82.82% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_013_✓_pred_normal_true_normal.png) | ✅ Correct | Clean elongated sperm, clear head. Compact, well-placed activation. One of the cleaner examples in the set |
-| 014 — 76.53% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_014_✓_pred_normal_true_normal.png) | ✅ Correct | Multi-cell frame with debris in background. Model focuses tightly on the correct elongated sperm head in centre-right, ignoring the smaller debris cell on the left |
-| **015 — 50.72%** | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_015_✗_pred_non_sperm_true_normal.png) | ❌ **Misclassified** | **True: normal — Pred: non_sperm.** The model sees a large pear-shaped head with an unusually elongated midpiece attachment, and at 50.72% confidence it barely tips over the non_sperm threshold. The Grad-CAM activation covers the full head-neck region rather than just the nucleus, which is consistent with the model being genuinely confused about what structure it is looking at. This is the most borderline morphology in the set |
-| 016 — 77.57% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_016_✓_pred_normal_true_normal.png) | ✅ Correct | Single sperm with tail fully in frame. Activation precisely on head, tail ignored |
-| 017 — 64.56% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_017_✓_pred_normal_true_normal.png) | ✅ Correct | Abnormal-looking tail attachment — head activation is correct but confidence is lower, which makes sense given the unusual midpiece morphology |
-| 018 — 74.51% | ![](experiments\results\gradcam\efficientnet_b0\20260304_205814\sample_018_✓_pred_normal_true_normal.png) | ✅ Correct | **Hardest correct prediction in the set.** Very cluttered background with debris and overlapping cellular material everywhere. Despite this, the model locks onto the sperm head in centre-frame. This is a strong result — the preprocessing pipeline (CLAHE + background subtraction) is almost certainly doing useful work here |
+| 012 — 59.45% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_012_✓_pred_normal_true_normal.png) | ✅ Correct | Sperm near slide edge — a difficult frame with the dark slide border visible. Model ignores the edge entirely and focuses on the head. Low confidence is appropriate given the partial occlusion |
+| 013 — 82.82% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_013_✓_pred_normal_true_normal.png) | ✅ Correct | Clean elongated sperm, clear head. Compact, well-placed activation. One of the cleaner examples in the set |
+| 014 — 76.53% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_014_✓_pred_normal_true_normal.png) | ✅ Correct | Multi-cell frame with debris in background. Model focuses tightly on the correct elongated sperm head in centre-right, ignoring the smaller debris cell on the left |
+| **015 — 50.72%** | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_015_✗_pred_non_sperm_true_normal.png) | ❌ **Misclassified** | **True: normal — Pred: non_sperm.** The model sees a large pear-shaped head with an unusually elongated midpiece attachment, and at 50.72% confidence it barely tips over the non_sperm threshold. The Grad-CAM activation covers the full head-neck region rather than just the nucleus, which is consistent with the model being genuinely confused about what structure it is looking at. This is the most borderline morphology in the set |
+| 016 — 77.57% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_016_✓_pred_normal_true_normal.png) | ✅ Correct | Single sperm with tail fully in frame. Activation precisely on head, tail ignored |
+| 017 — 64.56% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_017_✓_pred_normal_true_normal.png) | ✅ Correct | Abnormal-looking tail attachment — head activation is correct but confidence is lower, which makes sense given the unusual midpiece morphology |
+| 018 — 74.51% | ![](experiments/results/gradcam/efficientnet_b0/20260304_205814/sample_018_✓_pred_normal_true_normal.png) | ✅ Correct | **Hardest correct prediction in the set.** Very cluttered background with debris and overlapping cellular material everywhere. Despite this, the model locks onto the sperm head in centre-frame. This is a strong result — the preprocessing pipeline (CLAHE + background subtraction) is almost certainly doing useful work here |
 
 ### ResNet50 — Grad-CAM Samples (Set 1: samples 000–004)
 
@@ -221,11 +221,11 @@ Same frames as EfficientNet Set 1. ResNet50 is ~20 pp more confident but CV accu
 
 | Sample | Image | Notes |
 |--------|-------|-------|
-| 000 — 84.08% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_000_✓_pred_normal_true_normal.png) | Same multi-cell frame — commits to one head, 28 pp more confident than EfficientNet |
-| 001 — 91.04% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_001_✓_pred_normal_true_normal.png) | Highest confidence in set. Tight circular activation on acrosomal region |
-| 002 — 88.53% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_002_✓_pred_normal_true_normal.png) | Head+midpiece activation. Both models agree on this frame |
-| 003 — 86.93% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_003_✓_pred_normal_true_normal.png) | Elongated sperm. Head activation, no tail bleed |
-| 004 — 89.14% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_004_✓_pred_normal_true_normal.png) | Dual-head frame — focuses on larger head, 16 pp more confident than EfficientNet |
+| 000 — 84.08% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_000_✓_pred_normal_true_normal.png) | Same multi-cell frame — commits to one head, 28 pp more confident than EfficientNet |
+| 001 — 91.04% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_001_✓_pred_normal_true_normal.png) | Highest confidence in set. Tight circular activation on acrosomal region |
+| 002 — 88.53% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_002_✓_pred_normal_true_normal.png) | Head+midpiece activation. Both models agree on this frame |
+| 003 — 86.93% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_003_✓_pred_normal_true_normal.png) | Elongated sperm. Head activation, no tail bleed |
+| 004 — 89.14% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_004_✓_pred_normal_true_normal.png) | Dual-head frame — focuses on larger head, 16 pp more confident than EfficientNet |
 
 ### ResNet50 — Grad-CAM Samples (Set 2: samples 015–019)
 
@@ -233,9 +233,9 @@ This set exposes ResNet50's failure mode directly — including a misclassificat
 
 | Sample | Image | Result | Notes |
 |--------|-------|--------|-------|
-| 015 — 62.94% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_015_✓_pred_normal_true_normal.png) | ✅ Correct | Same pear-shaped sperm that EfficientNet misclassified as non_sperm at 50.72%. ResNet50 gets it right here, but at only 62.94% — both models are uncertain, they just fail on different edge cases |
-| 016 — 88.20% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_016_✓_pred_normal_true_normal.png) | ✅ Correct | Single elongated sperm with tail. Clean head-midpiece activation, confident and correct |
-| 017 — 84.49% | ![](experiments\results\gradcam\resnet50\20260304_205237\sample_017_✓_pred_normal_true_normal.png) | ✅ Correct | Unusual tail attachment at head-midpiece junction. Correct head focus, both models handle this well |
+| 015 — 62.94% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_015_✓_pred_normal_true_normal.png) | ✅ Correct | Same pear-shaped sperm that EfficientNet misclassified as non_sperm at 50.72%. ResNet50 gets it right here, but at only 62.94% — both models are uncertain, they just fail on different edge cases |
+| 016 — 88.20% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_016_✓_pred_normal_true_normal.png) | ✅ Correct | Single elongated sperm with tail. Clean head-midpiece activation, confident and correct |
+| 017 — 84.49% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_017_✓_pred_normal_true_normal.png) | ✅ Correct | Unusual tail attachment at head-midpiece junction. Correct head focus, both models handle this well |
 | **018 — 70.34%** | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_018_✗_pred_abnormal_true_normal.png) | ❌ **Misclassified** | **True: normal — Pred: abnormal (70.34%).** This is the exact same heavily cluttered background frame where EfficientNet-B0 predicted normal correctly at 74.51%. ResNet50 misclassifies it as abnormal — the dense debris and overlapping cellular material confuse it into seeing morphological defects that aren't there. The Grad-CAM lands on the right region but the global scene context overwhelms the classification. This is a direct same-frame head-to-head where EfficientNet wins |
 | 019 — 74.29% | ![](experiments/results/gradcam/resnet50/20260304_205237/sample_019_✓_pred_normal_true_normal.png) | ✅ Correct | Small triangular head. Lower confidence appropriate for this compact, somewhat atypical morphology |
 
