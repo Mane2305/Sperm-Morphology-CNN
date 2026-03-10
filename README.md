@@ -132,7 +132,7 @@ TTA generates N augmented versions of each test image, runs them all through the
 
 We swept N ∈ {1, 3, 5, 7, 10}:
 
-![TTA Comparison](tta_comparison.png)
+![TTA Comparison](experiments/results/tta_comparison.png)
 
 | Metric | Without TTA | With TTA (N=5) |
 |--------|-------------|----------------|
